@@ -4,38 +4,19 @@
   <img src="docs/static/images/framework.jpg" alt="Framework for explicit interaction event identification, feature representation, and AV-HV comparison" width="85%">
 </p>
 
-## Overview
+## Abstract
 
-Autonomous vehicles (AVs) and human-driven vehicles (HVs) interact with motor vehicles, pedestrians, and non-motorized vehicles at signalized intersections. This study defines **explicit interaction behavior (EIB)** as the co-occurrence of ego-vehicle kinematic-indicator deviations and local spatiotemporal proximity to a target road user, and develops a framework for **event identification, joint feature representation, and AV-HV comparison**.
-
-Using **24 h** of roadside trajectory data from **three signalized intersections in Beijing**, the framework identifies **166,045 interaction events**. Indicator comparisons and Gaussian mixture model clustering use **114,244 complete-feature events**, identifying **five intersection interaction patterns** and **four proximity interaction patterns**.
-
-The analysis compares AVs and HVs at three levels: overall motion and proximity indicators, pattern composition within each target road-user group, and indicator distributions within the same pattern. AVs have lower pooled medians of mean speed and absolute motion-response indicators, while proximity differences vary by target type and interaction pattern. For non-motorized-vehicle targets, the AV share of intersection pattern I-4 is **13.56 percentage points higher** than the HV share, whereas the share of I-5 is **9.10 percentage points lower**.
+Understanding how autonomous vehicles (AVs) interact with surrounding road users is essential for evaluating their integration into mixed traffic at signalized intersections. However, differences between AVs and human-driven vehicles (HVs) across road-user types and interaction patterns remain insufficiently characterized within a common event framework. Here, we develop an ego-vehicle-centered framework for explicit interaction behavior (EIB), defined by co-occurring kinematic-indicator deviations and local spatiotemporal proximity. We conduct an empirical analysis using the full roadside trajectory dataset collected over 24 h at three signalized intersections in the Beijing High-level Automated Driving Demonstration Area in Yizhuang. Of 166,045 extracted events, 114,244 have complete features for indicator comparisons and Gaussian mixture model clustering. Clustering identifies five trajectory-crossing interaction patterns and four proximity interaction patterns. Results show that AV events have lower pooled medians of mean absolute longitudinal acceleration, lateral acceleration, and jerk than HV events, while proximity differences vary by target road-user type. The largest trajectory-crossing pattern-share differences occur with non-motorized vehicles: AVs have a 13.56-percentage-point higher share of the pattern characterized by smaller post-encroachment time (PET) and a 9.10-percentage-point lower share of the pattern characterized by larger PET and stronger lateral adjustments. Both differences retain their directions under an alternative event-merging scheme. Within-pattern comparisons pooling target types show that lower AV motion-adjustment medians do not consistently accompany higher PET medians. These findings support evaluating AV interactions through both pattern composition and within-pattern characteristics, beyond aggregate kinematic indicators.
 
 ## Project Page
 
 The interactive project page presents the EIB definition, event statistics, overall comparisons, between-pattern characteristics, and within-pattern AV-HV differences.
 
-**GitHub Pages deployment is pending.** The intended address is:
+View the project page:
 
 [https://transmindbjut.github.io/Explicit_Interaction_Behavior/](https://transmindbjut.github.io/Explicit_Interaction_Behavior/)
 
 For local viewing, open `docs/index.html` in a browser. No build step or server is required.
-
-## Repository Structure
-
-```text
-.
-|-- docs/                         # GitHub Pages site (served from /docs)
-|   |-- index.html                # Project homepage
-|   |-- .nojekyll                 # Static-site publishing configuration
-|   `-- static/
-|       |-- academic.css          # Responsive stylesheet
-|       |-- app.js                # Interactive figures and pattern shares
-|       `-- images/               # Framework, study area, and result figures
-|-- .gitignore                    # Publication exclusions
-`-- README.md
-```
 
 ## Authors
 
