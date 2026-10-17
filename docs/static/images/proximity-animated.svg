@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 400" role="img">
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#000;font-size:13px}.label{font-size:13px;font-weight:600}.small{font-size:13px;fill:#000}</style>
+<rect width="460" height="400" fill="white"/>
+<defs><marker id="blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#397bb3"/></marker><marker id="rose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#aa7186"/></marker></defs>
+<text x="230" y="25" text-anchor="middle" class="label">Proximity interaction</text>
+<path d="M270 245V200Q270 160 230 160H145" fill="none" stroke="#397bb3" stroke-width="4" marker-end="url(#blue)"></path>
+<path d="M190 60V105Q190 145 230 145H315" fill="none" stroke="#aa7186" stroke-width="4" marker-end="url(#rose)"></path>
+<text x="285" y="248">Ego vehicle</text><text x="175" y="65" text-anchor="end">Target road user</text>
+<circle cx="270" cy="222" r="5" fill="#cf4c4c"/><circle cx="270" cy="222" r="12" fill="none" stroke="#cf4c4c" stroke-width="2"><animate attributeName="r" values="12;12;17;12;17;12;12" keyTimes="0;.18;.22;.26;.30;.34;1" dur="10s" repeatCount="indefinite"/></circle>
+<path d="M230 145V160" stroke="#946e22" stroke-width="2" stroke-dasharray="3 3"/>
+<circle cx="230" cy="145" r="5" fill="#fff" stroke="#946e22" stroke-width="2"/><circle cx="230" cy="160" r="5" fill="#fff" stroke="#946e22" stroke-width="2"/>
+<text x="240" y="134">t<tspan baseline-shift="sub" font-size="9">1</tspan></text>
+<text x="215" y="180">t<tspan baseline-shift="sub" font-size="9">2</tspan></text>
+<text x="300" y="190">t<tspan baseline-shift="sub" font-size="9">1</tspan><tspan baseline-shift="baseline"> − t</tspan><tspan baseline-shift="sub" font-size="9">2</tspan><tspan baseline-shift="baseline"> &lt; 5 s</tspan></text>
+<path d="M230 152.5L140 181" fill="none" stroke="#946e22"/>
+<text x="100" y="198">d<tspan baseline-shift="sub" font-size="9">min</tspan> ≤ 2 m</text>
+<path d="M50 310V366H410" fill="none" stroke="#aaa"/>
+<rect x="51" y="334" width="358" height="31" fill="#f3f5f6"/>
+<path d="M51 334H410" stroke="#a6adb3" stroke-dasharray="4 4"/>
+<text x="50" y="299">Kinematic indicator</text><text x="410" y="328" text-anchor="end" class="small">Comfort-range boundary</text>
+<path d="M55 351C90 350 110 354 135 347S162 337 174 320S192 320 207 341S244 350 270 349S340 345 398 351" fill="none" stroke="#397bb3" stroke-width="2.5"/>
+<circle cx="183.375" cy="315.625" r="13" fill="none" stroke="#cf4c4c" stroke-width="2"><animate attributeName="r" values="13;13;18;13;18;13;13" keyTimes="0;.18;.22;.26;.30;.34;1" dur="10s" repeatCount="indefinite"/></circle>
+<circle cx="183.375" cy="315.625" r="4.5" fill="#cf4c4c" stroke="#fff" stroke-width="1.5"/>
+<text x="410" y="384" class="small">Time</text>
+<circle cx="52" cy="384" r="4" fill="#cf4c4c"/><text x="63" y="388" class="small">Kinematic-indicator deviation</text>
+<g>
+<animate attributeName="opacity" values="1;0;0" keyTimes="0;0.9;1" dur="10s" repeatCount="indefinite" calcMode="discrete"/>
+<animateMotion path="M270 245V200Q270 160 230 160H145" dur="10s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyPoints="0;0.117991677;0.117991677;0.563943801;0.563943801;0.745633884;0.745633884;1;1;1" keyTimes="0;.18;.34;.60;.66;.76;.82;.90;.96;1"/>
+<rect x="-9" y="-5" width="18" height="10" rx="3" fill="#397bb3" stroke="white" stroke-width="1.2"/>
+<path d="M1 -3L5 -3L5 3L1 3Z" fill="#fff" opacity=".85"/>
+</g><g>
+<animate attributeName="opacity" values="1;0;0" keyTimes="0;0.96;1" dur="10s" repeatCount="indefinite" calcMode="discrete"/>
+<animateMotion path="M190 60V105Q190 145 230 145H315" dur="10s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyPoints="0;0.15;0.15;0.406250925;0.406250925;0.563943801;0.563943801;0.813118772;1;1" keyTimes="0;.18;.34;.60;.66;.76;.82;.90;.96;1"/>
+<rect x="-9" y="-5" width="18" height="10" rx="3" fill="#aa7186" stroke="white" stroke-width="1.2"/>
+<path d="M1 -3L5 -3L5 3L1 3Z" fill="#fff" opacity=".85"/>
+</g><circle cx="230" cy="160" r="10" fill="none" stroke="#946e22" stroke-width="2" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.6699999999999999;0.7;1" dur="10s" repeatCount="indefinite"/></circle><circle cx="230" cy="145" r="10" fill="none" stroke="#946e22" stroke-width="2" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.75;0.76;0.8300000000000001;0.86;1" dur="10s" repeatCount="indefinite"/></circle></svg>

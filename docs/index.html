@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explicit interaction behavior of autonomous and human-driven vehicles at three signalized intersections in Beijing.">
   <title>Explicit Interaction Behavior | AV &amp; HV</title>
+  <link rel="icon" type="image/svg+xml" href="static/favicon.svg?v=2">
   <link rel="stylesheet" href="static/academic.css">
   <script src="static/app.js" defer></script>
 </head>
@@ -12,53 +13,61 @@
   <a class="skip" href="#overview">Skip to content</a>
   <header id="top" class="masthead container">
     <h1>Contrasting Explicit Interaction Behavior of Autonomous and Human-Driven Vehicles at Signalized Intersections</h1>
-    <p class="authors">Shaobin Yang<sup>1</sup>, Lishan Sun<sup>1</sup>, Pengfei Cui<sup>1*</sup>, Lei Han<sup>2</sup>, Yang Yang<sup>3</sup>, Xingchen Zhang<sup>1</sup>, Rusi Chu<sup>1</sup></p>
+    <p class="authors"><a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=QXjPMpIAAAAJ">Shaobin Yang</a><sup>1</sup>, Lishan Sun<sup>1</sup>, <a href="https://scholar.google.com/citations?user=4EGD9vsAAAAJ&amp;hl=zh-CN">Pengfei Cui</a><sup>1*</sup>, <a href="https://scholar.google.com/citations?user=Gm1QlW0AAAAJ&amp;hl=zh-CN">Lei Han</a><sup>2</sup>, Yang Yang<sup>3</sup>, Xingchen Zhang<sup>1</sup>, Rusi Chu<sup>1</sup></p>
     <p class="affiliations"><span><sup>1</sup> Beijing University of Technology</span><span><sup>2</sup> University of Central Florida</span><span><sup>3</sup> Beijing Jiaotong University</span></p>
     <p class="correspondence">* Corresponding author: <a href="mailto:pengfeicui@bjut.edu.cn">Pengfei Cui</a></p>
-    <div class="links"><a href="#overview">Method <span aria-hidden="true">&#8595;</span></a><a href="#results">Results <span aria-hidden="true">&#8595;</span></a></div>
-    <p class="project-statement"><strong>Explicit Interaction Behavior (EIB)</strong><br>Comparing how autonomous and human-driven vehicles interact with surrounding road users.</p>
   </header>
-  <nav class="navigation" aria-label="Main navigation"><a class="brand" href="#top">EIB</a><div><a href="#overview">Definition</a><a href="#events">Event sample</a><a href="#results">Overall differences</a><a href="#comparison">Between patterns</a><a href="#within">Within patterns</a></div></nav>
   <main>
-    <section id="overview" class="section soft"><div class="container">
-      <p class="eyebrow">01 / DEFINITION &amp; IDENTIFICATION</p><h2>What is explicit interaction behavior?</h2>
-      <p class="lead">Explicit interaction behavior (EIB) is defined by the co-occurrence of ego-vehicle motion-indicator deviations and local spatiotemporal proximity to a target road user.</p>
-      <div class="interaction-types"><div><h3>Intersection interaction</h3><p>The local trajectories share a crossing point, with a post-encroachment time (PET) below 5 s.</p></div><div><h3>Proximity interaction</h3><p>If no intersection interaction meets the PET criterion, the nearest trajectory-point pair is assessed: minimum distance &le; 2 m and arrival-time gap &lt; 5 s.</p></div></div>
-      <p class="note">Both types are assessed following motion-deviation screening, within a local 5 s trajectory window.</p>
-      <figure><a class="zoom" href="static/images/framework.jpg" data-caption="Framework for explicit interaction event extraction, feature representation, and pattern comparison."><img loading="lazy" src="static/images/framework.jpg" width="2977" height="2077" alt="EIB method framework including motion deviation detection, PET and proximity assessment, event features and separate GMM clustering."></a></figure>
-      <div class="steps"><div><span>01</span><h3>Screen candidate points</h3><p>Identify motion-indicator deviations and retain candidate points in 0.5 s bins.</p></div><div><span>02</span><h3>Identify interactions</h3><p>Search target road users and assess intersection interactions first, followed by proximity interactions.</p></div><div><span>03</span><h3>Construct events</h3><p>Merge detections by ego vehicle, target road user, and interaction type, using detection continuity and a midpoint check.</p></div></div>
+    <section id="overview" class="section"><div class="container">
+      <h2>What is explicit interaction behavior?</h2>
+      <p>Explicit interaction behavior (EIB) is defined by the co-occurrence of an ego vehicle's kinematic-indicator deviation from a predefined comfort range and local spatiotemporal proximity to another road user. Within a local 5 s trajectory window, we distinguish two types:</p>
+      <ul class="method-steps">
+        <li><strong>Intersection interaction:</strong> The trajectories share a crossing point with a post-encroachment time (PET) below 5 s.</li>
+        <li><strong>Proximity interaction:</strong> When no crossing point satisfies the PET criterion, the nearest trajectory-point pair is at most 2 m apart, with an arrival-time gap below 5 s.</li>
+      </ul>
+      <div class="concept-figures">
+        <figure><img data-animation="intersection" src="static/images/intersection-concept.svg" width="460" height="400" alt="Intersection interaction: vehicles follow the existing trajectories, pause at the deviation, and reach the crossing at different times."></figure>
+        <figure><img data-animation="proximity" src="static/images/proximity-concept.svg" width="460" height="400" alt="Proximity interaction: opposing left turns, synchronized deviation highlighting, and separate arrivals at the nearest-point pair."></figure>
+      </div>
+      <div class="animation-controls"><button id="animation-toggle" type="button" aria-pressed="false">Play animation</button></div>
     </div></section>
-    <section id="events" class="section"><div class="container"><p class="eyebrow">02 / EVENT SAMPLE</p><h2>From roadside trajectories to event samples</h2><p class="lead">24 h of roadside trajectories from three signalized intersections in the Beijing High-level Automated Driving Demonstration Area.</p>
-      <div class="stats"><div><strong>24 h</strong><span>Roadside observations</span></div><div><strong>3</strong><span>Signalized intersections</span></div><div><strong>166,045</strong><span>Extracted events</span></div><div><strong>114,244</strong><span>Complete-feature events</span></div></div>
-      <div class="table-wrap"><table id="event-table"><caption>Extracted events by interaction type, ego vehicle, and target road user</caption><thead><tr><th scope="col">Interaction type</th><th scope="col">Ego type</th><th scope="col">Motor vehicles</th><th scope="col">Pedestrians</th><th scope="col">Non-motorized vehicles</th><th scope="col">All events</th><th scope="col">Complete-feature events</th></tr></thead><tbody>
+    <section id="method" class="section"><div class="container">
+      <h2>How do we study AV&#8211;HV differences in explicit interaction behavior?</h2>
+      <p>The framework below compares explicit interaction behavior between AVs and HVs through three stages:</p>
+      <ol class="method-steps">
+        <li><strong>Explicit interaction event extraction.</strong> Detect kinematic-indicator deviation points, identify intersection or proximity interactions, and merge detections satisfying continuity criteria into events.</li>
+        <li><strong>Event-level interaction behavior representation.</strong> Summarize motion and spatiotemporal characteristics for each event to construct an event-level feature matrix.</li>
+        <li><strong>Pattern clustering and comparison.</strong> Apply Gaussian mixture models separately to intersection and proximity events, then compare pattern shares and within-pattern indicators between AVs and HVs.</li>
+      </ol>
+      <figure><a class="zoom" href="static/images/framework.jpg"><img loading="lazy" src="static/images/framework.jpg" width="2977" height="2077" alt="Framework for identifying explicit interaction events and comparing AV and HV behavior."></a></figure>
+    </div></section>
+    <section id="events" class="section"><div class="container">
+      <h2>Interaction event sample</h2>
+      <p>Using 24 h of trajectories from three signalized intersections in Beijing, we extract 166,045 interaction events involving motor vehicles, pedestrians, and non-motorized vehicles. Of these, 114,244 have complete features and are used for subsequent comparisons and clustering. Target-type columns report all extracted events; the final column reports complete-feature events pooled across targets.</p>
+      <div class="table-wrap"><table id="event-table"><thead><tr><th scope="col">Interaction type</th><th scope="col">Ego type</th><th scope="col">Motor vehicles</th><th scope="col">Pedestrians</th><th scope="col">Non-motorized vehicles</th><th scope="col">All events</th><th scope="col">Complete-feature events</th></tr></thead><tbody>
         <tr><th scope="row">Intersection</th><td>AV</td><td>424</td><td>27</td><td>235</td><td>686</td><td>495</td></tr>
         <tr><th scope="row">Intersection</th><td>HV</td><td>27,628</td><td>2,224</td><td>9,603</td><td>39,455</td><td>27,233</td></tr>
         <tr><th scope="row">Proximity</th><td>AV</td><td>1,613</td><td>93</td><td>533</td><td>2,239</td><td>1,564</td></tr>
         <tr><th scope="row">Proximity</th><td>HV</td><td>96,724</td><td>5,865</td><td>21,076</td><td>123,665</td><td>84,952</td></tr>
       </tbody><tfoot><tr><th scope="row" colspan="2">Total</th><td>126,389</td><td>8,209</td><td>31,447</td><td>166,045</td><td>114,244</td></tr></tfoot></table></div>
-      <p class="note">Target-type columns count all extracted events. The final column counts events with complete features, pooled across targets. All subsequent indicator comparisons and clustering use the complete-feature sample (68.80% of extracted events).</p>
-      <details><summary>Study area</summary><figure><a class="zoom" href="static/images/Study_area.jpg"><img loading="lazy" src="static/images/Study_area.jpg" width="2720" height="1571" alt="Three roadside data collection intersections in Beijing."></a></figure></details>
-      <details><summary>Target composition and hourly event distribution</summary><figure><a class="zoom" href="static/images/Data.jpg"><img loading="lazy" src="static/images/Data.jpg" width="2846" height="1590" alt="Target composition and hourly event counts for AVs and HVs."></a><figcaption>All extracted events. Bars show total event counts by target type; lines show hourly event counts.</figcaption></figure></details>
     </div></section>
-    <section id="results" class="section soft"><div class="container"><p class="eyebrow">03 / OVERALL AV&#8211;HV DIFFERENCES</p><h2>Overall motion and proximity differences</h2><p class="lead">Before dividing events into patterns, compare motion responses across the complete-feature sample and proximity indicators within each target road-user group.</p><div class="findings"><div><strong>Motion responses</strong><p>AVs have lower pooled medians of mean speed, mean absolute longitudinal acceleration, lateral acceleration, and jerk.</p></div><div><strong>Intersection interactions</strong><p>Median PET is higher for AVs across all three target groups, although the distributions overlap.</p></div><div><strong>Proximity interactions</strong><p>AV median distances and time gaps are higher for motor-vehicle and pedestrian targets, but lower for non-motorized vehicles.</p></div></div>
-      <div class="tabs" role="tablist" aria-label="Overall result figures"><button role="tab" id="tab-motion" aria-selected="true" aria-controls="result-panel" data-figure="motion">Motion responses</button><button role="tab" id="tab-proximity" aria-selected="false" tabindex="-1" aria-controls="result-panel" data-figure="proximity">Spatiotemporal proximity</button></div>
-      <div id="result-panel" role="tabpanel" aria-labelledby="tab-motion"><figure class="result-figure"><a id="result-link" class="zoom" href="static/images/mean.jpg"><img id="result-image" src="static/images/mean.jpg" alt="AV and HV distributions of mean speed, mean absolute longitudinal and lateral acceleration, and jerk."></a><figcaption id="result-caption">Complete-feature events. Bars show density histograms; curves show smoothed histogram densities.</figcaption></figure></div>
+    <section id="results" class="section"><div class="container">
+      <h2>Overall AV&#8211;HV differences</h2>
+      <p>Across complete-feature events, median PET is higher for AVs than HVs in all three target road-user groups. For proximity interactions, AV median minimum distances and arrival-time gaps are higher for motor-vehicle and pedestrian targets, but lower for non-motorized-vehicle targets. These differences depend on the target type, and the distributions overlap.</p>
+      <figure><a class="zoom" href="static/images/PET-dmin-time.jpg"><img loading="lazy" src="static/images/PET-dmin-time.jpg" width="2581" height="1675" alt="Overall PET, minimum distance, and arrival-time gap distributions by target road-user type."></a></figure>
     </div></section>
-    <section id="comparison" class="section"><div class="container"><p class="eyebrow">04 / BETWEEN PATTERNS</p><h2>Pattern characteristics and AV&#8211;HV composition</h2><p class="lead">Separate Gaussian mixture models identify five intersection interaction patterns (I-1 to I-5) and four proximity interaction patterns (P-1 to P-4).</p>
-      <h3>How do the patterns differ?</h3><figure><a class="zoom" href="static/images/Features.jpg"><img loading="lazy" src="static/images/Features.jpg" width="3229" height="1347" alt="Indicator profiles for five intersection interaction patterns and four proximity interaction patterns."></a><figcaption>Each within-pattern indicator median is divided by its maximum across patterns of the same interaction type. Radius represents relative magnitude, not an overall behavioral score.</figcaption></figure>
-      <div class="interaction-types"><div><h3>Intersection patterns</h3><p>I-4 combines the lowest median PET with the highest median mean speed. I-3 has the highest medians of speed variability and the three absolute motion-response indicators.</p></div><div><h3>Proximity patterns</h3><p>P-1 has the highest medians of the three absolute motion-response indicators. P-4 has the lowest median minimum distance and time gap, and the highest median mean speed.</p></div></div>
-      <h3 class="subsection-heading">How are AV and HV events distributed across patterns?</h3><p>Pattern shares are compared within each target road-user type, using complete-feature events.</p>
-      <div class="comparison-controls"><fieldset><legend>Interaction type</legend><div class="segments"><button type="button" data-kind="I" aria-pressed="true">Intersection</button><button type="button" data-kind="P" aria-pressed="false">Proximity</button></div></fieldset><label>Target road user<select id="target"><option value="motor">Motor vehicles</option><option value="pedestrian">Pedestrians</option><option value="nonmotor">Non-motorized vehicles</option></select></label><div class="legend"><span class="av">AV</span><span class="hv">HV</span></div></div>
-      <p id="sample-size" class="sample"></p><div id="share-chart" class="share-chart" aria-label="Pattern shares"></div><p id="share-insight" class="insight" aria-live="polite"></p><p class="note">Differences are AV minus HV, in percentage points (pp), calculated from unrounded shares. Displayed percentages may differ by 0.01 pp under direct subtraction.</p>
-      <details><summary>Full pattern-share figure</summary><figure><a class="zoom" href="static/images/Pattern share.jpg"><img loading="lazy" src="static/images/Pattern share.jpg" width="2686" height="1545" alt="All six AV and HV pattern-share comparisons with complete-feature sample sizes."></a></figure></details>
+    <section id="comparison" class="section"><div class="container">
+      <h2>AV&#8211;HV differences between patterns</h2>
+      <p>Separate Gaussian mixture models identify five intersection interaction patterns and four proximity interaction patterns. Their shares are compared between AVs and HVs within each target road-user type using complete-feature events. For non-motorized-vehicle targets, AVs have a 13.56 percentage-point higher I-4 share and a 9.10 percentage-point lower I-5 share than HVs. For pedestrian targets, AVs have a lower P-1 share and a higher P-2 share.</p>
+      <figure><a class="zoom" href="static/images/Pattern share.jpg"><img loading="lazy" src="static/images/Pattern share.jpg" width="2686" height="1545" alt="AV and HV pattern shares by target road-user type."></a></figure>
     </div></section>
-    <section id="within" class="section soft"><div class="container"><p class="eyebrow">05 / WITHIN PATTERNS</p><h2>AV&#8211;HV differences within the same pattern</h2><p class="lead">Within each pattern, indicator distributions are compared between AVs and HVs after pooling the three target road-user types.</p>
-      <figure><a class="zoom" href="static/images/Comparison of event-level indicators.jpg"><img loading="lazy" src="static/images/Comparison of event-level indicators.jpg" width="2877" height="1472" alt="Within-pattern AV and HV distributions of PET, deceleration ratio, distance, time gap, and jerk."></a><figcaption>Complete-feature events pooled across target types. Boxes show the interquartile range, white lines the median, and whiskers the 5th&#8211;95th percentiles. Observations outside the whiskers are not displayed.</figcaption></figure>
-      <div class="interaction-types"><div><h3>Intersection interactions</h3><p>AVs have lower median deceleration ratios and mean absolute jerk in I-3 and I-5. Median PET is lower for AVs in I-3 (2.31 versus 2.48 s), but higher in I-5 (3.29 versus 3.00 s).</p></div><div><h3>Proximity interactions</h3><p>In P-1, AVs have a larger median minimum distance (0.80 versus 0.66 m), but a smaller median time gap (2.96 versus 3.15 s). Spatial and temporal differences can have opposite directions.</p></div></div>
-      <h3 class="subsection-heading" id="cases">Illustrative trajectory cases</h3><p>AV and HV intersection interaction cases are paired by target road-user type and interaction pattern.</p><figure><a class="zoom" href="static/images/case.jpg"><img loading="lazy" src="static/images/case.jpg" width="2980" height="1958" alt="Paired AV and HV trajectory cases with speed coloring, PET, lateral acceleration and jerk."></a><figcaption>Motor-vehicle and pedestrian cases combine larger AV PET with lower lateral acceleration and jerk. The non-motorized-vehicle pair shows larger AV values for all three indicators. These cases illustrate specific scenarios.</figcaption></figure>
+    <section id="within" class="section"><div class="container">
+      <h2>AV&#8211;HV differences within patterns</h2>
+      <p>After pooling the three target road-user types, AVs have lower median deceleration ratios and mean absolute jerk in I-3 and I-5, while median PET is lower for AVs in I-3 but higher in I-5. In P-1, AVs have a larger median minimum distance but a smaller median arrival-time gap. Motion adjustments and spatiotemporal proximity therefore show different combinations of AV–HV differences within patterns.</p>
+      <figure><a class="zoom" href="static/images/Comparison of event-level indicators.jpg"><img loading="lazy" src="static/images/Comparison of event-level indicators.jpg" width="2877" height="1472" alt="Within-pattern AV and HV indicator distributions; boxes show interquartile ranges, white lines medians, and whiskers the 5th to 95th percentiles."></a></figure>
     </div></section>
   </main>
-  <footer class="container"><div><strong>Explicit Interaction Behavior (EIB)</strong><p>Raw trajectory data cannot be shared. Processed data are available on request.</p><a href="mailto:pengfeicui@bjut.edu.cn">Contact</a></div><a href="#top">Back to top &#8593;</a></footer>
+  <footer class="container"><a href="#top">Back to top &#8593;</a></footer>
   <dialog id="viewer" aria-label="Figure viewer"><form method="dialog"><button aria-label="Close figure" title="Close">&#215;</button></form><img id="viewer-image" alt=""><p id="viewer-caption"></p></dialog>
 </body>
 </html>

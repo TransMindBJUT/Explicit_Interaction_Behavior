@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 400" role="img">
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#000;font-size:13px}.label{font-size:13px;font-weight:600}.small{font-size:13px;fill:#000}</style>
+<rect width="460" height="400" fill="white"/>
+<defs><marker id="blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#397bb3"/></marker><marker id="rose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#aa7186"/></marker></defs>
+<text x="230" y="25" text-anchor="middle" class="label">Intersection interaction</text>
+<path d="M270 245L270 200Q270 120 190 120H140" fill="none" stroke="#397bb3" stroke-width="4" marker-end="url(#blue)"/>
+<path d="M210 70V225" fill="none" stroke="#aa7186" stroke-width="4" marker-end="url(#rose)"/>
+<text x="285" y="248">Ego vehicle</text><text x="195" y="75" text-anchor="end">Target road user</text>
+<circle cx="270" cy="222" r="5" fill="#cf4c4c"/><circle cx="270" cy="222" r="12" fill="none" stroke="#cf4c4c" stroke-width="2"/>
+<circle cx="210" cy="121.44" r="7" fill="#fff" stroke="#946e22" stroke-width="2.5"/>
+<text x="225" y="105">PET &lt; 5 s</text>
+<path d="M50 310V366H410" fill="none" stroke="#aaa"/>
+<rect x="51" y="334" width="358" height="31" fill="#f3f5f6"/>
+<path d="M51 334H410" stroke="#a6adb3" stroke-dasharray="4 4"/>
+<text x="50" y="299">Kinematic indicator</text><text x="410" y="328" text-anchor="end" class="small">Comfort-range boundary</text>
+<path d="M55 351C90 350 110 354 135 347S162 337 174 320S192 320 207 341S244 350 270 349S340 345 398 351" fill="none" stroke="#397bb3" stroke-width="2.5"/>
+<circle cx="183.375" cy="315.625" r="13" fill="none" stroke="#cf4c4c" stroke-width="2"/>
+<circle cx="183.375" cy="315.625" r="4.5" fill="#cf4c4c" stroke="#fff" stroke-width="1.5"/>
+<text x="410" y="384" class="small">Time</text>
+<circle cx="52" cy="384" r="4" fill="#cf4c4c"/><text x="63" y="388" class="small">Kinematic-indicator deviation</text>
+</svg>

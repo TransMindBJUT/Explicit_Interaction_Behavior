@@ -6,7 +6,7 @@
 
 ## Overview
 
-Autonomous vehicles (AVs) and human-driven vehicles (HVs) interact with motor vehicles, pedestrians, and non-motorized vehicles at signalized intersections. This study defines **explicit interaction behavior (EIB)** as the co-occurrence of ego-vehicle motion-indicator deviations and local spatiotemporal proximity to a target road user, and develops a framework for **event identification, joint feature representation, and AV-HV comparison**.
+Autonomous vehicles (AVs) and human-driven vehicles (HVs) interact with motor vehicles, pedestrians, and non-motorized vehicles at signalized intersections. This study defines **explicit interaction behavior (EIB)** as the co-occurrence of ego-vehicle kinematic-indicator deviations and local spatiotemporal proximity to a target road user, and develops a framework for **event identification, joint feature representation, and AV-HV comparison**.
 
 Using **24 h** of roadside trajectory data from **three signalized intersections in Beijing**, the framework identifies **166,045 interaction events**. Indicator comparisons and Gaussian mixture model clustering use **114,244 complete-feature events**, identifying **five intersection interaction patterns** and **four proximity interaction patterns**.
 

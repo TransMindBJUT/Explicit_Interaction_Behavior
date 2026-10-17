@@ -10,9 +10,14 @@
 /docs/static/*
 !/docs/static/academic.css
 !/docs/static/app.js
+!/docs/static/favicon.svg
 !/docs/static/images/
 /docs/static/images/*
 !/docs/static/images/*.jpg
+!/docs/static/images/intersection-concept.svg
+!/docs/static/images/intersection-animated.svg
+!/docs/static/images/proximity-concept.svg
+!/docs/static/images/proximity-animated.svg
 
 # Manuscripts remain local.
 *.pdf
