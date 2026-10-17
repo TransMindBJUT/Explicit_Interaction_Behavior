@@ -1,0 +1,18 @@
+# Publish only the reviewed project page and its assets.
+/*
+!/.gitignore
+!/README.md
+!/docs/
+/docs/*
+!/docs/index.html
+!/docs/.nojekyll
+!/docs/static/
+/docs/static/*
+!/docs/static/academic.css
+!/docs/static/app.js
+!/docs/static/images/
+/docs/static/images/*
+!/docs/static/images/*.jpg
+
+# Manuscripts remain local.
+*.pdf
