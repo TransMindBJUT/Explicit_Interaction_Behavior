@@ -1,24 +1,54 @@
-# Explicit Interaction Behavior project page
+# Contrasting Explicit Interaction Behavior of Autonomous and Human-Driven Vehicles at Signalized Intersections
 
-Open `docs/index.html` in a browser. No build step or server is required.
+<p align="center">
+  <img src="docs/static/images/framework.jpg" alt="Framework for explicit interaction event identification, feature representation, and AV-HV comparison" width="85%">
+</p>
 
-The page follows five sections: EIB definition and identification; event sample statistics; overall AV-HV indicator differences; between-pattern characteristics and composition; within-pattern comparisons and illustrative cases.
+## Overview
 
-The page includes manuscript figures, result tabs, an interactive pattern-share comparison, and full-size figure viewing. This repository publishes the project website and figures only, not the manuscript PDF, raw trajectory data, or processing and analysis code.
+Autonomous vehicles (AVs) and human-driven vehicles (HVs) interact with motor vehicles, pedestrians, and non-motorized vehicles at signalized intersections. This study defines **explicit interaction behavior (EIB)** as the co-occurrence of ego-vehicle motion-indicator deviations and local spatiotemporal proximity to a target road user, and develops a framework for **event identification, joint feature representation, and AV-HV comparison**.
 
-Event counts and pattern shares are based on the author's manuscript results. The event table's target columns count all events, whereas complete-feature counts are reported separately. Numerical shares use the main event-merging scheme; differences use the reported unrounded calculations.
+Using **24 h** of roadside trajectory data from **three signalized intersections in Beijing**, the framework identifies **166,045 interaction events**. Indicator comparisons and Gaussian mixture model clustering use **114,244 complete-feature events**, identifying **five intersection interaction patterns** and **four proximity interaction patterns**.
 
-## Files
+The analysis compares AVs and HVs at three levels: overall motion and proximity indicators, pattern composition within each target road-user group, and indicator distributions within the same pattern. AVs have lower pooled medians of mean speed and absolute motion-response indicators, while proximity differences vary by target type and interaction pattern. For non-motorized-vehicle targets, the AV share of intersection pattern I-4 is **13.56 percentage points higher** than the HV share, whereas the share of I-5 is **9.10 percentage points lower**.
 
-- `docs/index.html`: page content
-- `docs/static/academic.css`: responsive academic-page styling, visually inspired by https://tongnie.github.io/SAGE/ (implemented independently)
-- `docs/static/app.js`: figure tabs and comparison values
-- `docs/static/images/`: manuscript figures
+## Project Page
 
-## Publication
+The interactive project page presents the EIB definition, event statistics, overall comparisons, between-pattern characteristics, and within-pattern AV-HV differences.
 
-For GitHub Pages, select the `main` branch and `/docs` folder as the publishing source. No build step is needed.
+**GitHub Pages deployment is pending.** The intended address is:
 
-Raw trajectory data cannot be shared. Processed data are available on request.
+[https://transmindbjut.github.io/Explicit_Interaction_Behavior/](https://transmindbjut.github.io/Explicit_Interaction_Behavior/)
 
-Corresponding author: Pengfei Cui, Beijing University of Technology. Contact: pengfeicui@bjut.edu.cn.
+For local viewing, open `docs/index.html` in a browser. No build step or server is required.
+
+## Repository Structure
+
+```text
+.
+|-- docs/                         # GitHub Pages site (served from /docs)
+|   |-- index.html                # Project homepage
+|   |-- .nojekyll                 # Static-site publishing configuration
+|   `-- static/
+|       |-- academic.css          # Responsive stylesheet
+|       |-- app.js                # Interactive figures and pattern shares
+|       `-- images/               # Framework, study area, and result figures
+|-- .gitignore                    # Publication exclusions
+`-- README.md
+```
+
+## Authors
+
+Shaobin Yang<sup>1</sup>, Lishan Sun<sup>1</sup>, Pengfei Cui<sup>1*</sup>, Lei Han<sup>2</sup>, Yang Yang<sup>3</sup>, Xingchen Zhang<sup>1</sup>, Rusi Chu<sup>1</sup>
+
+<sup>1</sup> Beijing University of Technology &middot; <sup>2</sup> University of Central Florida &middot; <sup>3</sup> Beijing Jiaotong University
+
+\* Corresponding author: [Pengfei Cui](mailto:pengfeicui@bjut.edu.cn)
+
+## Data Availability
+
+The authors do not have permission to share the raw trajectory data. This repository contains only the project page and figures; the manuscript PDF and processing and analysis code are not included. Processed data are available on request.
+
+## Citation
+
+*To be added upon publication.*
