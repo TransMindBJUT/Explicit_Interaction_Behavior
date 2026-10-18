@@ -7,8 +7,10 @@ a:hover { text-decoration: underline; }
 button { font: inherit; cursor: pointer; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .container { width: min(960px, calc(100% - 48px)); margin-inline: auto; }
-.masthead { padding: 48px 0 28px; text-align: center; }
-h1 { margin: 0 auto 22px; font-size: 38px; line-height: 1.2; font-weight: 700; text-wrap: balance; }
+.masthead { width: min(1280px, calc(100% - 48px)); padding: 48px 0 28px; text-align: center; }
+h1 { margin: 0 auto 22px; font-size: 44px; line-height: 1.2; font-weight: 700; text-wrap: balance; }
+h1 span { display: block; }
+@media (max-width: 1100px) { h1 span { display: inline; } }
 .authors { margin: 0 0 12px; font-size: 19px; color: var(--accent); line-height: 1.8; }
 sup { font-size: 65%; line-height: 0; }
 .affiliations { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 20px; margin: 0; font-size: 15px; }
