@@ -36,7 +36,7 @@ function tick(now){if(playing)elapsed+=(now-last)/1000;last=now;if(bg.complete&&
 document.getElementById('play').onclick=()=>{playing=!playing;document.getElementById('play').textContent=playing?'Ⅱ':'▶';document.getElementById('play').setAttribute('aria-label',playing?'Pause':'Play')};document.getElementById('reset').onclick=()=>elapsed=0;
 window.previewState={panels,render,get elapsed(){return elapsed},setTime(t){elapsed=t;playing=false;panels.forEach(render)}};
 
-function reportHeight(){parent.postMessage({type:'interaction-cases-height',height:document.documentElement.scrollHeight},location.origin==='null'?'*':location.origin)}
-new ResizeObserver(reportHeight).observe(document.body);
+function reportHeight(){const main=document.querySelector('main');parent.postMessage({type:'interaction-cases-height',height:Math.ceil(main.getBoundingClientRect().bottom+scrollY)},location.protocol==='file:'?'*':location.origin)}
+new ResizeObserver(reportHeight).observe(document.querySelector('main'));
 window.addEventListener('load',reportHeight);
 </script></html>

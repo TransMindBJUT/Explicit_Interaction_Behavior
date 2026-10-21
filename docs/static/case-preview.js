@@ -1,8 +1,8 @@
 const caseFrame = document.getElementById('interaction-cases');
 function syncCaseHeight() {
   try {
-    const body = caseFrame?.contentDocument?.body;
-    if (body) caseFrame.style.height = `${Math.ceil(body.scrollHeight)}px`;
+    const main = caseFrame?.contentDocument?.querySelector('main');
+    if (main) caseFrame.style.height = `${Math.ceil(main.getBoundingClientRect().bottom + caseFrame.contentWindow.scrollY)}px`;
   } catch (_) {
     // Local file previews may need the postMessage path instead.
   }
