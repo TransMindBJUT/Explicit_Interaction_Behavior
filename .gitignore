@@ -10,6 +10,8 @@
 /docs/static/*
 !/docs/static/academic.css
 !/docs/static/app.js
+!/docs/static/case-preview.js
+!/docs/static/interaction-cases.html
 !/docs/static/favicon.svg
 !/docs/static/images/
 /docs/static/images/*

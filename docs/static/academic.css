@@ -50,6 +50,7 @@ figure { margin: 24px 0; }
 figure img { display: block; width: 100%; height: auto; }
 figcaption { margin: 12px auto 0; color: var(--muted); font-size: 13px; line-height: 1.6; text-align: left; }
 .subsection-heading { margin-top: 30px; }
+.case-preview { display: block; width: 100%; height: 1250px; border: 0; }
 .insight { margin: 18px 0; font-size: 16px; }
 .table-wrap { overflow-x: auto; margin-top: 22px; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
