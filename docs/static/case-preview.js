@@ -1,4 +1,15 @@
 const caseFrame = document.getElementById('interaction-cases');
+function syncCaseHeight() {
+  try {
+    const body = caseFrame?.contentDocument?.body;
+    if (body) caseFrame.style.height = `${Math.ceil(body.scrollHeight)}px`;
+  } catch (_) {
+    // Local file previews may need the postMessage path instead.
+  }
+}
+caseFrame?.addEventListener('load', syncCaseHeight);
+window.addEventListener('resize', syncCaseHeight);
+syncCaseHeight();
 window.addEventListener('message', (event) => {
   if (!caseFrame || event.source !== caseFrame.contentWindow) return;
   if (location.protocol !== 'file:' && event.origin !== location.origin) return;
